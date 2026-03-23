@@ -1,0 +1,19 @@
+.overlay { position:fixed; inset:0; background:rgba(28,26,23,0.5); backdrop-filter:blur(4px); z-index:200; display:flex; align-items:center; justify-content:center; padding:1rem; animation:fadeIn 0.18s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.panel { background:var(--warm-white); border-radius:18px; width:100%; max-width:540px; max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 24px 80px rgba(28,26,23,0.25); animation:slideUp 0.22s ease; }
+@keyframes slideUp { from{transform:translateY(18px);opacity:0} to{transform:translateY(0);opacity:1} }
+.close { position:absolute; top:0.9rem; right:0.9rem; background:rgba(28,26,23,0.08); border:none; border-radius:50%; width:30px; height:30px; font-size:0.75rem; color:var(--ink); z-index:10; transition:background 0.2s; }
+.close:hover { background:rgba(28,26,23,0.15); }
+.imgWrap { width:100%; height:210px; overflow:hidden; border-radius:18px 18px 0 0; background:var(--sand); }
+.img { width:100%; height:100%; object-fit:cover; display:block; }
+.noImg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.85rem; }
+.content { padding:1.4rem 1.75rem 1.75rem; }
+.topRow { display:flex; align-items:center; gap:0.65rem; margin-bottom:0.6rem; }
+.id { font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; }
+.fnBadge { font-size:0.68rem; font-weight:500; padding:0.22rem 0.7rem; border-radius:20px; }
+.tarifit { font-family:var(--font-display); font-size:1.75rem; font-style:italic; color:var(--ink); line-height:1.3; margin-bottom:1.25rem; }
+.fields { display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.1rem; }
+.field { padding:0.65rem 0.9rem; background:var(--sand); border-radius:9px; }
+.fieldLabel { display:block; font-size:0.64rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-light); opacity:0.6; margin-bottom:0.25rem; }
+.fieldVal { font-size:0.9rem; color:var(--ink); line-height:1.4; }
+.meta { display:flex; gap:1.25rem; font-size:0.72rem; color:var(--ink-light); opacity:0.5; border-top:1px solid var(--border); padding-top:0.9rem; }
