@@ -7,13 +7,19 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+
 app.use("/illustrations", express.static(path.join(__dirname, "public/illustrations")));
 
 app.use("/api/rhq", require("./routes/rhq"));
 app.use("/api/admin", require("./routes/admin").router);
 
-app.get("/", (req, res) => res.json({ status: "RHQ API running" }));
+const frontendBuild = path.join(__dirname, "../frontend/dist");
+app.use(express.static(frontendBuild));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendBuild, "index.html"));
+});
 
 app.listen(PORT, () => {
-  console.log(`✅ Backend running at http://localhost:${PORT}`);
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });
