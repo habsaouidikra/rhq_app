@@ -25,7 +25,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: rhq-corpus
-  NODE_VERSION: '20.x'
+  NODE_VERSION: '24.x'  # upgrade to Node 24 LTS
 
 permissions:
   contents: read
@@ -47,15 +47,17 @@ jobs:
           rm -rf node_modules
           npm install
 
-      - name: Install frontend dependencies and build
-        working-directory: ./frontend
+      - name: Build frontend
         run: |
+          cd frontend
           rm -rf node_modules
           npm install --legacy-peer-deps
-          npx vite build
+          npm run build
 
       - name: Copy frontend build into backend
-        run: cp -r frontend/dist backend/dist
+        run: |
+          mkdir -p backend/dist
+          cp -r frontend/dist/* backend/dist/
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
