@@ -25,7 +25,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: rhq-corpus
   AZURE_WEBAPP_PACKAGE_PATH: 'backend'
-  NODE_VERSION: '20.x'
+  NODE_VERSION: '24.x'
 
 permissions:
   contents: read
@@ -43,7 +43,7 @@ jobs:
         cache: 'npm'
 
     - name: Install backend dependencies
-      working-directory: ./backend       # <-- Add this
+      working-directory: ./backend    # <--- ADD THIS
       run: npm install
 
     - name: Upload artifact for deployment job
