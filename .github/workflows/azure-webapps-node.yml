@@ -43,13 +43,16 @@ jobs:
 
       - name: Install backend dependencies
         working-directory: ./backend
-        run: npm install
+        run: |
+          rm -rf node_modules
+          npm install
 
       - name: Install frontend dependencies and build
         working-directory: ./frontend
         run: |
+          rm -rf node_modules
           npm install --legacy-peer-deps
-          npm run build
+          npx vite build
 
       - name: Copy frontend build into backend
         run: cp -r frontend/dist backend/dist
